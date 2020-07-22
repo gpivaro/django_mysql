@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django-MySQL - Temperature</title>
+
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <h3>Temperature Measurments</h3>
+        <table style="width:100%">
+            <tr>
+                <th>Time</th>
+                <th>Temperature Sensor 1 (C)</th>
+                <th>Temperature Sensor 2 (C)</th>
+                <th>Temperature Sensor 3 (C)</th>
+            </tr>
+            {% for post in posts %}
+            <tr>
+                <th>{{post.time}}</th>
+                <th>{{post.temp_sensor_1}}</th>
+                <th>{{post.temp_sensor_2}}</th>
+                <th>{{post.temp_sensor_3}}</th>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div>
+        <h3>Humidity Measurments</h3>
+        <table style="width:100%">
+            <tr>
+                <th>Time</th>
+                <th>Humidity Sensor 1 (%)</th>
+                <th>Humidity Sensor 2 (%)</th>
+                <th>Humidity Sensor 3 (%)</th>
+            </tr>
+            {% for post in posts %}
+            <tr>
+                <th>{{post.time}}</th>
+                <th>{{post.hum_sensor_1}}</th>
+                <th>{{post.hum_sensor_2}}</th>
+                <th>{{post.hum_sensor_3}}</th>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+
+</html>
