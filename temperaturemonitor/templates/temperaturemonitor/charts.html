@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charts</title>
+</head>
+
+<body>
+    <h1>Charts</h1>
+
+    <a href="{% url 'index' %}">Home</a>
+
+    {% block content %}
+    <div id="container" style="width: 75%;">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: {{ labels| safe }},
+        datasets: [{
+            label: {{ label1| safe}},
+            data: {{ data1| safe }},
+        }, {
+            label: {{ label2| safe}},
+            data: {{ data2| safe }},
+        }, {
+            label: {{ label3| safe}},
+            data: {{ data3| safe }},
+        }]
+            },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+        });
+    </script>
+
+
+    <p>{{ data1}}</p>
+    <p>{{ data2}}</p>
+    <p>{{ data2}}</p>
+
+    {% endblock %}
+
+
+</body>
+
+</html>

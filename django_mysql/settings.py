@@ -92,14 +92,27 @@ WSGI_APPLICATION = "django_mysql.wsgi.application"
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.mysql",
+#         "NAME": "PiTempHumDB",
+#         "USER": config.get("DEBIAN_MYSQL_USERNAME"),
+#         "PASSWORD": config.get("DEBIAN_MYSQL_PASSWORD"),
+#         "HOST": config.get("DEBIAN_MYSQL_HOSTNAME"),
+#         "PORT": config.get("DEBIAN_MYSQL_PORT"),
+#     }
+# }
+
+
+# For use in production with MySQL database
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
         "NAME": "PiTempHumDB",
-        "USER": config.get("DEBIAN_MYSQL_USERNAME"),
-        "PASSWORD": config.get("DEBIAN_MYSQL_PASSWORD"),
-        "HOST": config.get("DEBIAN_MYSQL_HOSTNAME"),
-        "PORT": config.get("DEBIAN_MYSQL_PORT"),
+        "USER": config.get("MYSQL_USERNAME"),
+        "PASSWORD": config.get("MYSQL_PASSWORD"),
+        "HOST": config.get("MYSQL_HOSTNAME"),
+        "PORT": config.get("MYSQL_PORT"),
     }
 }
 
