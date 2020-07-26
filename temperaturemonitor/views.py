@@ -16,12 +16,13 @@ def charts(request):
     label1 = ["Sensor 1"]
     label2 = ["Sensor 2"]
     label3 = ["Sensor 3"]
-    measurments = TempHumMeas.objects.order_by("-time")[:1]
+    measurments = TempHumMeas.objects.order_by("-time")[:288]
     for meas in measurments:
         data1.append(meas.temp_sensor_1)
         data2.append(meas.temp_sensor_2)
-        data3.append(meas.temp_sensor_3)
         labels.append(str(meas.time))
+
+    data_new = data1[0]
     return render(
         request,
         "temperaturemonitor/charts.html",
@@ -29,10 +30,8 @@ def charts(request):
             "labels": labels,
             "data1": data1,
             "data2": data2,
-            "data3": data3,
             "label1": label1,
-            "label2": label2,
-            "label3": label3,
+            "data_new": data_new,
         },
     )
 

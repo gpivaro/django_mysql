@@ -28,13 +28,7 @@
         datasets: [{
             label: {{ label1| safe}},
             data: {{ data1| safe }},
-        }, {
-            label: {{ label2| safe}},
-            data: {{ data2| safe }},
-        }, {
-            label: {{ label3| safe}},
-            data: {{ data3| safe }},
-        }]
+        },]
             },
         options: {
             scales: {
@@ -51,7 +45,10 @@
 
     <p>{{ data1}}</p>
     <p>{{ data2}}</p>
-    <p>{{ data2}}</p>
+
+
+
+    <p>{{ data_new }}</p>
 
     {% endblock %}
 
