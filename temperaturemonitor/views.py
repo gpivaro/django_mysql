@@ -35,3 +35,23 @@ def charts(request):
         },
     )
 
+
+def measurments(request):
+    meas_label = []
+    sens_1_temp = []
+    sens_3_temp = []
+    data = TempHumMeas.objects.order_by("-time")[:288]
+    for meas in data:
+        meas_label.append(str(meas.time))
+        sens_1_temp.append(meas.temp_sensor_1)
+        sens_3_temp.append(meas.temp_sensor_3)
+    return render(
+        request,
+        "temperaturemonitor/measurments.html",
+        {
+            "meas_label": meas_label,
+            "sens_1_temp": sens_1_temp,
+            "sens_3_temp": sens_3_temp,
+        },
+    )
+

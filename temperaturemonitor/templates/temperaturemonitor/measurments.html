@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <div id="container" style="width: 75%;">
+        <canvas id="myChart"></canvas>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+
+
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: {{ meas_label| safe}},
+        datasets: [{
+            label: 'Sensor 1 (C)',
+            data: {{ sens_1_temp| safe }},
+        }]
+            },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+        });
+    </script>
+
+
+    <div id="container" style="width: 75%;">
+        <canvas id="myChart2"></canvas>
+    </div>
+
+
+
+    <script>
+        var ctx = document.getElementById('myChart2').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: {{ meas_label| safe}},
+        datasets: [{
+            label: 'Sensor 1 (C)',
+            data: {{ sens_1_temp| safe }},
+        }, {
+            label: 'Sensor 3 (C)',
+            data: {{ sens_3_temp| safe }},
+            backgroundColor: [
+            'rgba(255, 99, 132, 0.2)'],
+            borderColor: [
+            'rgba(255, 99, 132, 1)'],
+        }]
+            },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+        });
+    </script>
+
+</body>
+
+</html>
